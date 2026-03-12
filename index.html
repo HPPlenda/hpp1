@@ -3,68 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Henrique Paiva Pinheiro - Portfólio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Cartão de Visita - Henrique Paiva Pinheiro</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000000; /* Preto */
+            color: #FFFFFF; /* Branco */
+            overflow-x: hidden;
+        }
+        header {
+            text-align: center;
+            padding: 100px 20px;
+            background-color: #333333; /* Cinza escuro */
+        }
+        .header-logo {
+            display: block;
+            margin: 0 auto 30px;
+            max-width: 280px; /* um pouco maior */
+            border-radius: 50%; /* foto redonda */
+            object-fit: cover;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .cta-button {
+            background-color: #FFFFFF;
+            color: #000000;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            margin: 20px 0;
+            border-radius: 50px; /* cantos arredondados */
+        }
+        .cta-button:active {
+            transform: scale(1.05);
+            background-color: #666666;
+            color: #FFFFFF;
+        }
+        .cta-button.clicked {
+            background-color: #666666; /* mantém cinza após 1 clique */
+            color: #FFFFFF;
+        }
+        section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .service-icon {
+            width: 120px; /* um pouco maior */
+            height: 120px;
+            background-color: #333333; /* cinza escuro como você pediu */
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            padding: 10px; /* espaço para a imagem não grudar na borda */
+            box-sizing: border-box;
+        }
+        .service-icon.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .service-icon:nth-child(even) {
+            transform: translateX(100px);
+        }
+        .service-icon:nth-child(even).visible {
+            transform: translateX(0);
+        }
+        .persuasive-text {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .persuasive-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        footer {
+            background-color: #333333;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            p { font-size: 1em; }
+            .cta-button { font-size: 1em; padding: 10px 20px; }
+        }
+    </style>
 </head>
 <body>
-    <header class="header">
-        <div class="header-content">
-            <div class="profile-image-container">
-                <img src="img1.webp" alt="Henrique Paiva Pinheiro" class="profile-image">
+    <header>
+        <img src="img1.jpeg" alt="Henrique Paiva Pinheiro" class="header-logo">
+        <h1>Henrique Paiva Pinheiro</h1>
+        <p>27 anos, Empreendedor Digital</p>
+        <p>Especialista em Gravit Design, Edição de Fotos e Vídeos, Programador Júnior Front-End e Back-End (HTML, CSS, JavaScript, Supabase)</p>
+        <p>Quero ajudar criadores iniciantes a construir estruturas online sólidas. Ofereço serviços como criação de logotipos vetoriais, animações keyframe em vídeo para logotipos, e edição de vídeos para YouTube e curtos. Acredito no crescimento mútuo: unidos, evoluímos. Vamos conectar e crescer juntos!</p>
+        <button class="cta-button" onclick="handleClick(this)">Contrate Meus Serviços Agora</button>
+    </header>
+    <section id="services-section">
+        <h2>Meus Serviços Transformadores</h2>
+        <p class="persuasive-text">Imagine seu conteúdo digital ganhando vida com designs profissionais e edições impecáveis. Não perca tempo – eleve seu projeto hoje!</p>
+        <div class="services">
+            <div>
+                <img src="img2.svg" class="service-icon" alt="Criação de Imagens Vetoriais de Logotipos">
+                <p>Criação de Imagens Vetoriais de Logotipos</p>
             </div>
-            <div class="header-info">
-                <h1>Henrique Paiva Pinheiro</h1>
-                <p>Edição de imagens e vídeos para negócios online</p>
+            <div>
+                <img src="img3.svg" class="service-icon" alt="Animação Keyframe de Logotipos">
+                <p>Animação Keyframe de Logotipos</p>
+            </div>
+            <div>
+                <img src="img4.svg" class="service-icon" alt="Edição de Vídeos para YouTube e Curtos">
+                <p>Edição de Vídeos para YouTube e Curtos</p>
+            </div>
+            <div>
+                <img src="img5.svg" class="service-icon" alt="Estruturas Online para Criadores Iniciantes">
+                <p>Estruturas Online para Criadores Iniciantes</p>
             </div>
         </div>
-        <nav class="navigation">
-            <button class="nav-button active" data-section="about">Sobre mim</button>
-            <button class="nav-button" data-section="skills">Habilidades</button>
-            <button class="nav-button" data-section="projects">Meus projetos</button>
-            <button class="nav-button" data-section="social-proof">Prova Social</button>
-        </nav>
-    </header>
-
-    <main class="main-content">
-        <section id="about" class="content-section active">
-            <div class="section-image">
-                <img src="img2.webp" alt="Henrique Paiva Pinheiro trabalhando">
-            </div>
-            <div class="section-text">
-                <p>Meu nome é <strong>Henrique Paiva Pinheiro</strong> tenho 26 anos, moro em Manaus AM, gosto de editar imagens e vídeos (são meus hobbys preferidos e por isso trabalho com isso). Gosto de criar coisas do zero, minha ocupação principal é trabalhando como CLT, porém pretendo sair da mesma para me dedicar totalmente a trabalhar com o que mais amo que é o design de imagens e vídeos.</p>
-            </div>
-        </section>
-
-        <section id="skills" class="content-section">
-            <div class="section-text">
-                <p>Sou apaixonado por edição visual — cada frame e cada pixel contam uma história. Trabalho com correção de cor (color grading) para criar atmosferas únicas, recorte preciso com máscaras e rotoscopia, e aplico transições suaves e efeitos visuais (VFX) que elevam a narrativa. Na edição de imagens, domino técnicas como ajuste de curvas, tratamento de pele, remoção de objetos com content-aware fill, e composição avançada em camadas.</p>
-                <p>Utilizo ferramentas como Adobe Premiere Pro, After Effects, Photoshop e DaVinci Resolve, sempre focado em entregar resultados que atendem às expectativas visuais e emocionais dos meus clientes. Se você busca alguém que entende de timing, estética e storytelling visual, estou pronto para transformar seu projeto em algo memorável.</p>
-            </div>
-        </section>
-
-        <section id="projects" class="content-section">
-            <div class="project-column">
-                <p><strong>Imagens Impactantes:</strong> Transformo imagens comuns em composições visuais impactantes. Trabalho com manipulação digital, tratamento de cores, remoção de imperfeições, e composição em camadas para criar peças únicas e profissionais. Seja para redes sociais, campanhas publicitárias ou branding pessoal, aplico técnicas como dodge & burn, ajuste de curvas, fusão de texturas e recorte com precisão vetorial para garantir que cada imagem conte uma história e transmita valor.</p>
-            </div>
-            <div class="project-column">
-                <p><strong>Criativos que Convertem:</strong> Se você vende produtos físicos online, sabe que o visual é o primeiro argumento de venda. Eu crio criativos estratégicos e persuasivos que convertem. Utilizo técnicas de design orientado à performance, edição com foco em gatilhos visuais, e animações leves para destacar os diferenciais do produto. Trabalho com mockups realistas, edição de fundo com ambientação comercial, e tipografia de impacto para gerar atenção e desejo.</p>
-            </div>
-            <div class="project-column">
-                <p><strong>Vídeos e Thumbnails de Destaque:</strong> Seu conteúdo merece destaque — e eu entrego isso com edição profissional de vídeos e thumbnails que capturam atenção em segundos. Produzo vídeos curtos em formato vertical para Reels, TikTok e Shorts, com cortes dinâmicos, legendas animadas, efeitos de transição, e trilhas sonoras sincronizadas. Para thumbnails, aplico técnicas de contraste visual, expressividade facial, tipografia de impacto, e composição que gera cliques.</p>
-            </div>
-        </section>
-
-        <section id="social-proof" class="content-section">
-            <div class="section-text">
-                <p>Especialista em edição de imagens e vídeos para negócios online. Mais do que um trabalho, essa é minha paixão — e isso faz toda a diferença! Cada projeto que entrego carrega dedicação, criatividade e atenção aos detalhes. Por eu amar o que faço, meus clientes sentem essa energia no resultado final. E o retorno é incrível: satisfação total, elogios constantes e parcerias duradouras.</p>
-                <p>Se você quer destacar sua marca com conteúdo visual de qualidade, estou aqui para transformar sua visão em realidade. Porque quando a gente faz o que ama, o sucesso é consequência.</p>
-            </div>
-            <div class="section-image">
-                <img src="img3.webp" alt="Prova Social - Mensagem de cliente">
-            </div>
-        </section>
-    </main>
-
-    <script src="script.js"></script>
+        <p class="persuasive-text">Milhares de criadores já viram resultados reais. Você será o próximo? Clique abaixo e comece sua jornada de sucesso.</p>
+        <button class="cta-button" onclick="handleClick(this)">Agende uma Consulta Gratuita</button>
+    </section>
+    <section>
+        <h2>Por Que Escolher Meus Serviços?</h2>
+        <p class="persuasive-text">Com expertise em ferramentas modernas, garanto qualidade e inovação. Seu crescimento é minha prioridade – juntos, alcançamos o topo!</p>
+        <p class="persuasive-text">Não espere o momento perfeito; crie-o agora. Invista em serviços que impulsionam sua presença digital.</p>
+        <p class="persuasive-text">Clientes satisfeitos relatam aumento de engajamento em até 200%. Junte-se a eles!</p>
+    </section>
+    <footer>
+        <h2>Prontinho para Crescer Juntos?</h2>
+        <p class="persuasive-text">Mantenha contato e evolua: henriquepaivapinheiro777@gmail.com | (92) 98418-3507</p>
+        <button class="cta-button" onclick="handleClick(this)">Entre em Contato Imediatamente</button>
+    </footer>
+    <script>
+        let clickTimer = null;
+        function handleClick(button) {
+            if (clickTimer === null) {
+                clickTimer = setTimeout(() => {
+                    button.classList.add('clicked'); // mantém cinza após 1 clique
+                    clickTimer = null;
+                }, 300);
+            } else {
+                clearTimeout(clickTimer);
+                clickTimer = null;
+                window.location.href = 'https://www.google.com';
+            }
+        }
+        // Animações on scroll
+        function handleScroll() {
+            const elements = document.querySelectorAll('.service-icon, .persuasive-text');
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+        window.addEventListener('scroll', handleScroll);
+        handleScroll(); // Inicial check
+    </script>
 </body>
 </html>
