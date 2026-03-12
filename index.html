@@ -21,8 +21,8 @@
         .header-logo {
             display: block;
             margin: 0 auto 30px;
-            max-width: 280px; /* um pouco maior */
-            border-radius: 50%; /* foto redonda */
+            max-width: 280px;
+            border-radius: 50%;
             object-fit: cover;
         }
         h1 {
@@ -40,17 +40,13 @@
             padding: 15px 30px;
             font-size: 1.2em;
             cursor: pointer;
-            transition: transform 0.2s ease;
             margin: 20px 0;
-            border-radius: 50px; /* cantos arredondados */
+            border-radius: 50px;
+            transition: transform 0.4s ease, background-color 0.4s ease, color 0.4s ease;
         }
-        .cta-button:active {
-            transform: scale(1.05);
+        .cta-button.clicking {
+            transform: scale(1.05); /* expansão leve */
             background-color: #666666;
-            color: #FFFFFF;
-        }
-        .cta-button.clicked {
-            background-color: #666666; /* mantém cinza após 1 clique */
             color: #FFFFFF;
         }
         section {
@@ -64,15 +60,15 @@
             gap: 20px;
         }
         .service-icon {
-            width: 120px; /* um pouco maior */
+            width: 120px;
             height: 120px;
-            background-color: #333333; /* cinza escuro como você pediu */
+            background-color: #333333;
             border-radius: 50%;
             margin: 0 auto 20px;
             opacity: 0;
             transform: translateX(-100px);
             transition: opacity 0.5s ease, transform 0.5s ease;
-            padding: 10px; /* espaço para a imagem não grudar na borda */
+            padding: 10px;
             box-sizing: border-box;
         }
         .service-icon.visible {
@@ -151,20 +147,15 @@
         <button class="cta-button" onclick="handleClick(this)">Entre em Contato Imediatamente</button>
     </footer>
     <script>
-        let clickTimer = null;
         function handleClick(button) {
-            if (clickTimer === null) {
-                clickTimer = setTimeout(() => {
-                    button.classList.add('clicked'); // mantém cinza após 1 clique
-                    clickTimer = null;
-                }, 300);
-            } else {
-                clearTimeout(clickTimer);
-                clickTimer = null;
+            button.classList.add('clicking'); // inicia a animação de 0.4s
+            
+            setTimeout(() => {
                 window.location.href = 'https://www.google.com';
-            }
+            }, 400);
         }
-        // Animações on scroll
+
+        // Animações on scroll (mantidas exatamente como estavam)
         function handleScroll() {
             const elements = document.querySelectorAll('.service-icon, .persuasive-text');
             elements.forEach(el => {
