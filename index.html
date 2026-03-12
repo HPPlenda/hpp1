@@ -149,19 +149,20 @@
     <script>
         function handleClick(button) {
             button.classList.add('clicking'); // inicia a animação de 0.4s
-            
+           
             setTimeout(() => {
                 window.location.href = 'https://www.google.com';
             }, 400);
         }
-
-        // Animações on scroll (mantidas exatamente como estavam)
+        // Animações on scroll (atualizadas para repetir ao scrollar para cima/baixo)
         function handleScroll() {
             const elements = document.querySelectorAll('.service-icon, .persuasive-text');
             elements.forEach(el => {
                 const rect = el.getBoundingClientRect();
                 if (rect.top < window.innerHeight && rect.bottom > 0) {
                     el.classList.add('visible');
+                } else {
+                    el.classList.remove('visible');
                 }
             });
         }
